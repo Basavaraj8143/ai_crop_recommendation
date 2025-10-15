@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Crop Recommendation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-green-50 font-sans">
+
+    <!-- Header -->
+    <header class="bg-green-700 text-white p-6 text-center">
+        <h1 class="text-3xl font-bold">AI-Based Crop Recommendation System</h1>
+        <p class="mt-2 text-lg">Karnataka Farmers Support Portal</p>
+    </header>
+
+    <!-- Form Section -->
+    <section class="max-w-2xl mx-auto mt-8 p-6 bg-white shadow-md rounded-md">
+        <h2 class="text-xl font-semibold mb-4">Enter Field Details</h2>
+        <form id="cropForm" class="space-y-4">
+
+            <div>
+                <label class="block font-medium">District</label>
+                <select id="district" class="w-full border rounded p-2">
+                    <option value="">Select District</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Mysore">Mysore</option>
+                    <option value="Belgaum">Belgaum</option>
+                    <!-- Add more districts later -->
+                </select>
+            </div>
+
+            <div>
+                <label class="block font-medium">Soil Type</label>
+                <select id="soilType" class="w-full border rounded p-2">
+                    <option value="">Select Soil Type</option>
+                    <option value="Red">Red</option>
+                    <option value="Black">Black</option>
+                    <option value="Laterite">Laterite</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block font-medium">N (Nitrogen)</label>
+                    <input type="number" id="n" class="w-full border rounded p-2" placeholder="ppm">
+                </div>
+                <div>
+                    <label class="block font-medium">P (Phosphorus)</label>
+                    <input type="number" id="p" class="w-full border rounded p-2" placeholder="ppm">
+                </div>
+                <div>
+                    <label class="block font-medium">K (Potassium)</label>
+                    <input type="number" id="k" class="w-full border rounded p-2" placeholder="ppm">
+                </div>
+                <div>
+                    <label class="block font-medium">pH</label>
+                    <input type="number" id="ph" step="0.1" class="w-full border rounded p-2" placeholder="3-10">
+                </div>
+                <div>
+                    <label class="block font-medium">Rainfall (mm)</label>
+                    <input type="number" id="rainfall" class="w-full border rounded p-2" placeholder="mm">
+                </div>
+                <div>
+                    <label class="block font-medium">Temperature (°C)</label>
+                    <input type="number" id="temp" class="w-full border rounded p-2" placeholder="°C">
+                </div>
+                <div>
+                    <label class="block font-medium">Humidity (%)</label>
+                    <input type="number" id="humidity" class="w-full border rounded p-2" placeholder="%">
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="w-full bg-green-700 text-white p-3 rounded hover:bg-green-800 transition">
+                    Get Recommendation
+                </button>
+            </div>
+        </form>
+
+        <!-- Result Section -->
+<div id="result" class="mt-6 p-4 bg-green-100 rounded hidden">
+    <h3 class="text-lg font-semibold">Recommended Crop:</h3>
+    <p id="recommendedCrop" class="mt-2 text-green-900 font-bold text-xl"></p>
+
+    <h4 class="mt-4 font-semibold">Top 3 Crops:</h4>
+    <div id="top3Crops" class="ml-4"></div>
+
+    <p id="confidence" class="mt-4 font-medium text-green-700"></p>
+    
+    <!-- Add canvas for chart -->
+    <canvas id="top3Chart" width="400" height="200" class="mt-4"></canvas>
+</div>
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
